@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>Futsallkuy!!</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,13 +23,12 @@
     <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
     <link rel="stylesheet" href="{{asset('css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('css/lib/datatable/dataTables.bootstrap.min.css')}}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="{{asset('scss/style.css')}}">
     <link href="{{asset('css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
 <body>
@@ -289,6 +288,28 @@
 <script src="{{asset('js/lib/vector-map/jquery.vmap.min.js')}}"></script>
 <script src="{{asset('js/lib/vector-map/jquery.vmap.sampledata.js')}}"></script>
 <script src="{{asset('js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>
+
+<script src="{{asset('js/popper.min.js')}}"></script>
+
+
+<script src="{{asset('js/lib/data-table/datatables.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/jszip.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/pdfmake.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/vfs_fonts.js')}}"></script>
+<script src="{{asset('js/lib/data-table/buttons.html5.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/buttons.print.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('js/lib/data-table/datatables-init.js')}}"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#bootstrap-data-table-export').DataTable();
+    } );
+</script>
 <script>
     (function ($) {
         "use strict";
