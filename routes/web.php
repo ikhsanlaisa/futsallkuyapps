@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'indexController@index');
 Route::get('/data_lapangan', 'indexController@data_lapangan');
+Route::get('/tambah_lapangan', 'indexController@tambah_lapangan');

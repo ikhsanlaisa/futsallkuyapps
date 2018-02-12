@@ -29,7 +29,7 @@
                                     <td>Kamis, 8 February 2017</td>
                                     <td>$320,800</td>
                                     <td>
-                                        <button type="button" class="btn btn-inline btn-success btn-sm ladda-button" title="tambah" name="button" data-toggle="modal" data-target="#modaledit" ><span class="fa fa-plus"></span></button>
+                                        <button type="button" class="btn btn-inline btn-success btn-sm ladda-button" title="tambah" name="button" data-toggle="modal" data-target="#modaledit" onclick="location.href='/tambah_lapangan';" ><span class="fa fa-plus"></span></button>
                                         <button type="button" class="btn btn-inline btn-warning btn-sm ladda-button" title="tambah" name="button" data-toggle="modal" data-target="#modaledit" ><span class="fa fa-edit"></span></button>
                                         <button type="delete" name="delete" id="btnhapus" value="delete" class="btn btn-inline btn-danger btn-sm ladda-button" onclick="return confirm('Are you sure to delete this data');"><i class="fa fa-trash"></i></button>
                                     </td>

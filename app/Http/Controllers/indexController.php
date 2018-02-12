@@ -14,5 +14,9 @@ class indexController extends Controller
         return view('admin.data_lapangan');
     }
 
+    public function tambah_lapangan(){
+        return view('admin.tambah_lapangan');
+    }
+
 
 }
