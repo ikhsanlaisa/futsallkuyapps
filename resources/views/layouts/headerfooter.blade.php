@@ -54,8 +54,13 @@
                 </li>
 
                 <li class="active">
-                    <a href="/data_lapangan"> <i class="menu-icon fa fa-plus-square-o"></i>Data Lapangan</a>
+                    <a href="/data_lapangan"> <i class="menu-icon fa fa-plus-square-o"></i>Management Lapangan</a>
                 </li>
+
+                <li class="active">
+                    <a href="#"> <i class="menu-icon fa fa-calendar-check-o"></i>Management Jadwal</a>
+                </li>
+
 
                 <li class="active">
                     <a href="#"> <i class="menu-icon fa fa-shopping-cart"></i>Transaksi</a>

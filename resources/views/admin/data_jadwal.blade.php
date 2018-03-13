@@ -15,49 +15,49 @@
                                 <p>{{ Session::get('message') }}</p>
                             </div>
                         @endif
-                        @if(!empty($lap))
-                        <div class="card-body">
-                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Lapangan</th>
-                                    <th>Harga</th>
-                                    <th>Foto</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $i = 1 ?>
-                                @foreach($lap as $l)
-                                <tr>
-                                    <td>{{$i++}}</td>
-                                    <td>{{$l->name}}</td>
-                                    <td>{{$l->price}}</td>
-                                    <td><img src="images/lapangan/{{$l->foto}}" class="img-thumbnail" width="100" height="100"/></td>
-                                    {{--<td>$320,800</td>--}}
-                                    <td>
-                                        <center>
-                                            {{--<button type="button" class="btn btn-inline btn-success btn-sm ladda-button" title="tambah" name="button" data-toggle="modal" data-target="#modaledit" onclick="location.href='/tambah_lapangan';" ><span class="fa fa-plus"></span></button>--}}
-                                            <form action="/deletedatalapangan/{{$l->id}}" method="post" >
-                                                {{csrf_field()}}
-                                                <input type="hidden" name="_method" value="delete">
-                                                <button type="button" class="btn btn-inline btn-success btn-sm ladda-button"
-                                                        onclick="showModal({{ $l->id }})" title="edit" name="button"
-                                                        data-toggle="modal" data-target="#modaledit"><span
-                                                            class="fa fa-edit"></span></button>
+                        @if(!empty($jadwal))
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Lapangan</th>
+                                        <th>Harga</th>
+                                        <th>Foto</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $i = 1 ?>
+                                    @foreach($jadwal as $j)
+                                        <tr>
+                                            <td>{{$i++}}</td>
+                                            <td>{{$j->lapangan->name}}</td>
+                                            <td>{{$j->price}}</td>
+                                            <td><img src="images/lapangan/{{$l->foto}}" class="img-thumbnail" width="100" height="100"/></td>
+                                            {{--<td>$320,800</td>--}}
+                                            <td>
+                                                <center>
+                                                    {{--<button type="button" class="btn btn-inline btn-success btn-sm ladda-button" title="tambah" name="button" data-toggle="modal" data-target="#modaledit" onclick="location.href='/tambah_lapangan';" ><span class="fa fa-plus"></span></button>--}}
+                                                    <form action="/deletedatalapangan/{{$l->id}}" method="post" >
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="_method" value="delete">
+                                                        <button type="button" class="btn btn-inline btn-success btn-sm ladda-button"
+                                                                onclick="showModal({{ $l->id }})" title="edit" name="button"
+                                                                data-toggle="modal" data-target="#modaledit"><span
+                                                                    class="fa fa-edit"></span></button>
 
-                                                <button type="delete" name="delete" id="btnhapus" value="delete" class="btn btn-inline btn-danger btn-sm ladda-button" onclick="return confirm('Are you sure to delete this data');"><i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </center>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                <?php ;?>
-                                </tbody>
-                            </table>
-                        </div>
-                            @endif
+                                                        <button type="delete" name="delete" id="btnhapus" value="delete" class="btn btn-inline btn-danger btn-sm ladda-button" onclick="return confirm('Are you sure to delete this data');"><i class="fa fa-trash"></i></button>
+                                                    </form>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    <?php ;?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                     </div>
                 </div>
 

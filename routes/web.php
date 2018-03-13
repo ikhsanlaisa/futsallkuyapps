@@ -28,5 +28,12 @@ Route::get('/tambah_lapangan', 'TbLapanganController@tambah_lapangan');
 
 Route::post('/post_lapangan', 'TbLapanganController@store');
 
-Route::get('detaildatalapangan', 'TbLapanganController@show');
+Route::get('detaildatalapangan/{id}', 'TbLapanganController@show');
 
+Route::put('updatedatalapangan/{id}', 'TbLapanganController@update');
+
+Route::delete('deletedatalapangan/{id}', 'TbLapanganController@destroy');
+
+//----data jadwal------//
+
+Route::get('data_jadwal', 'TbJadwalController@index');

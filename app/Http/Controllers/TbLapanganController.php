@@ -15,7 +15,7 @@ class TbLapanganController extends Controller
 
     public function data_lapangan()
     {
-        $lap = tb_lapangan::where('store_id', Auth::user()->lap()->first()->id)->get();
+        $lap = tb_lapangan::where('store_id', Auth::user()->first()->id)->get();
         return view('admin.data_lapangan')->with('lap', $lap);
     }
 
@@ -50,7 +50,42 @@ class TbLapanganController extends Controller
     }
 
     public function show($id){
+        $laps = tb_lapangan::find($id);
+        return json_encode($laps);
+    }
+
+    public function update(Request $request, $id){
         $lap = tb_lapangan::find($id);
-        return json_encode($lap);
+
+        $filepath = 'images/lapangan/';
+        if ($request->input('foto')){
+            $field = $request->input('foto');
+
+            $fields = $field->getClientOriginalName();
+            $field->move($filepath, $fields);
+            $lap->foto = $fields;
+        }
+        if ($request->input('nama')){
+        $lap->name = $request->input('nama');
+        }
+        if ($request->input('price')){
+        $lap->price = $request->input('price');
+        }
+        $result = $lap->save();
+        if ($result){
+            return redirect('/data_lapangan')->with(['message' => 'Berhasil update data lapangan']);
+        }else{
+            return redirect('/data_lapangan')->with(['message' => 'Gagal update data lapangan']);
+        }
+    }
+
+    public function destroy($id){
+        $lap = tb_lapangan::find($id);
+        $result = $lap->delete();
+        if ($result){
+            return redirect('/data_lapangan')->with(['message' => 'Berhasil hapus data lapangan']);
+        }else{
+            return redirect('/data_lapangan')->with(['message' => 'Gagal hapus data lapangan']);
+        }
     }
 }
