@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TbFasilitasController extends Controller
+class TbBookingController extends Controller
 {
     //
 }

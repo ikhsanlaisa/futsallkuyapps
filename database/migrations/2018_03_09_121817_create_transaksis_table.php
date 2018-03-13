@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTbJadwalsTable extends Migration
+class CreateTransaksisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateTbJadwalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_jadwals', function (Blueprint $table) {
+        Schema::create('transaksis', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('booking_id')->unsigned();
+            $table->string('bukti_tf');
+            $table->string('status_tf');
             $table->timestamps();
+
+            $table->foreign('booking_id')->references('id')->on('tb_bookings')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,6 +31,6 @@ class CreateTbJadwalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_jadwals');
+        Schema::dropIfExists('transaksis');
     }
 }

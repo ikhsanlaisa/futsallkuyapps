@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TbLaporanController extends Controller
+class TransaksiController extends Controller
 {
     //
 }

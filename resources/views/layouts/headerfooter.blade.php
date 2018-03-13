@@ -163,23 +163,20 @@
             </div>
 
             <div class="col-sm-5">
-                <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">
-                        <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
-                    </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    {{ csrf_field() }}
 
-                    <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
 
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span
-                                    class="count">13</span></a>
-
-                        <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                        <div class="user-menu dropdown-menu">
+                            <button type="submit" style="border-radius: 20px" class="btn btn-outline-danger"><i class="fa fa-power -off"></i>Logout</button>
+                        </div>
                     </div>
-                </div>
+                </form>
 
                 <div class="language-select dropdown" id="language-select">
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="language" aria-haspopup="true"
@@ -242,9 +239,9 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#bootstrap-data-table-export').DataTable();
-    } );
+    });
 </script>
 <script>
     (function ($) {

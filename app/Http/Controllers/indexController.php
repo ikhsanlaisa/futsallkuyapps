@@ -6,17 +6,12 @@ use Illuminate\Http\Request;
 
 class indexController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function index(){
         return view('admin.index');
     }
-
-    public function data_lapangan(){
-        return view('admin.data_lapangan');
-    }
-
-    public function tambah_lapangan(){
-        return view('admin.tambah_lapangan');
-    }
-
-
 }

@@ -20,5 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'indexController@index');
-Route::get('/data_lapangan', 'indexController@data_lapangan');
-Route::get('/tambah_lapangan', 'indexController@tambah_lapangan');
+
+//------data lapangan-----
+Route::get('/data_lapangan', 'TbLapanganController@data_lapangan');
+
+Route::get('/tambah_lapangan', 'TbLapanganController@tambah_lapangan');
+
+Route::post('/post_lapangan', 'TbLapanganController@store');
+
+Route::get('detaildatalapangan', 'TbLapanganController@show');
+

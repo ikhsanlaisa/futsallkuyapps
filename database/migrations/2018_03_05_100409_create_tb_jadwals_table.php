@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTbFasilitasTable extends Migration
+class CreateTbJadwalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateTbFasilitasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_fasilitas', function (Blueprint $table) {
+        Schema::create('tb_jadwals', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('lapangan_id')->unsigned();
+            $table->string('jadwal_lapangan');
+            $table->string('status');
             $table->timestamps();
+
+            $table->foreign('lapangan_id')->references('id')->on('tb_lapangans')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,6 +31,6 @@ class CreateTbFasilitasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_fasilitas');
+        Schema::dropIfExists('tb_jadwals');
     }
 }

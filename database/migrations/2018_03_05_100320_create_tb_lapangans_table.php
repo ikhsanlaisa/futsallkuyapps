@@ -15,7 +15,13 @@ class CreateTbLapangansTable extends Migration
     {
         Schema::create('tb_lapangans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('price');
+            $table->string('foto');
+            $table->integer('store_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('store_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
