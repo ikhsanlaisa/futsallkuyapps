@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'indexController@index');
+//Route::get('/', 'indexController@index');
 
 //------data lapangan-----
 Route::get('/data_lapangan', 'TbLapanganController@data_lapangan');
@@ -37,3 +37,6 @@ Route::delete('deletedatalapangan/{id}', 'TbLapanganController@destroy');
 //----data jadwal------//
 
 Route::get('data_jadwal', 'TbJadwalController@index');
+
+//----------data Cutomer------//
+Route::get('/home', 'Customer\HomeController@index');
