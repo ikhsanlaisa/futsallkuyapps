@@ -19,7 +19,7 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/', 'indexController@index');
+Route::get('/', 'indexController@index');
 
 //------data lapangan-----
 Route::get('/data_lapangan', 'TbLapanganController@data_lapangan');
