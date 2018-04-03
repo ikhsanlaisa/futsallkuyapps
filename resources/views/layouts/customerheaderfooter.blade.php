@@ -43,7 +43,7 @@
         <div class="container">
             <div class="row d-flex align-items-center">
                 <div class="col-md-6 d-md-block d-none">
-                    <p>Contact us on +420 777 555 333 or hello@universal.com.</p>
+                    <p>Contact us on +420 777 555 333 or futsallkuy@gmail.com.</p>
                 </div>
                 <div class="col-md-6">
                     <div class="d-flex justify-content-md-end justify-content-between">
@@ -98,14 +98,7 @@
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <div id="navigation" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item dropdown active"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Home <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-item"><a href="index.html" class="nav-link">Option 1: Default Page</a></li>
-                                <li class="dropdown-item"><a href="index2.html" class="nav-link">Option 2: Application</a></li>
-                                <li class="dropdown-item"><a href="index3.html" class="nav-link">Option 3: Startup</a></li>
-                                <li class="dropdown-item"><a href="index4.html" class="nav-link">Option 4: Agency</a></li>
-                                <li class="dropdown-item"><a href="index5.html" class="nav-link">Option 5: Portfolio</a></li>
-                            </ul>
+                        <li><a href="/">Home <b class="caret"></b></a>
                         </li>
                         <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Features<b class="caret"></b></a>
                             <ul class="dropdown-menu megamenu">
