@@ -51,7 +51,7 @@
     </div>
     <div class="col-sm-4">
       <div class="project-more">
-        {{--<h4>Harga</h4> <p>{{$l->price}},-/jam</p>--}}
+        <h4>Harga</h4> <p>{{$lap->price}},-/jam</p>
         {{--<h4>Rating</h4> <p></p>--}}
         <h4>Pilih Jadwal</h4>
         <p>
@@ -103,6 +103,7 @@
               <button class="btn btn-warning" title="{{date("H:i",$t)}} - {{$td}}">Sudah Diambil</button>
               @endif
               @endforeach
+                {{--<button class="btn btn-default" title="{{date("H:i",$t)}} - {{$td}}">Ambil</button>--}}
             </td>
             @endfor
           </tr>

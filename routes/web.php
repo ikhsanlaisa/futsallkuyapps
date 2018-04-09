@@ -41,7 +41,13 @@ Route::get('data_jadwal', 'TbJadwalController@index');
 //----------data Cutomer------//
 Route::get('/', 'Customer\HomesController@index');
 
+Route::get('/book', 'Customer\HomesController@booking');
+
+Route::get('/lobi', 'Customer\HomesController@lobi');
+
 Route::get('/detail/{id}', 'Customer\HomesController@show');
+
+
 
 
 //$json = '[

@@ -1,7 +1,7 @@
 @extends('customer.layout')
 
 @section('title')
-Booking &middot; {{$item->title}}
+{{--Booking &middot; {{$item->title}}--}}
 @endsection
 
 @section('style')
@@ -12,14 +12,14 @@ Booking &middot; {{$item->title}}
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1>{{$item->title}}</h1>
+{{--        <h1>{{$item->title}}</h1>--}}
         <div class="row">
         <div class="col-md-5">
-          <img src="{{asset('images/customer/sample/')}}/{{$item->icon}}" style="width: 98%;">
+{{--          <img src="{{asset('images/customer/sample/')}}/{{$item->icon}}" style="width: 98%;">--}}
         </div>
         <div class="col-md-7">
-          <h4>Harga</h4> <p>{{$item->price}},-/jam</p>
-          <h4>Alamat</h4> <p>{{$item->addr}}</p>
+{{--          <h4>Harga</h4> <p>{{$item->price}},-/jam</p>--}}
+{{--          <h4>Alamat</h4> <p>{{$item->addr}}</p>--}}
         </div>
         </div>
       </div>
@@ -27,7 +27,7 @@ Booking &middot; {{$item->title}}
         <h1>User Info</h1>
         <div>
         <h4>Username</h4> <p>Examples.</p>
-        <!-- <h4></h4> <p>{{$item->rate}}</p> -->
+
         </div>
       </div>
     </div>
