@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class tb_lapangan extends Model
 {
     protected $table = 'tb_lapangans';
-    protected $fillable = array('name', 'price', 'foto',  'store_id');
+    protected $fillable = array('id','name', 'price', 'foto',  'store_id');
 
     public function jadwal(){
         return $this->hasMany('App\tb_jadwal', 'lapangan_id');

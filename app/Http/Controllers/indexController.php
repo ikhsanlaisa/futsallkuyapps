@@ -12,6 +12,8 @@ class indexController extends Controller
     }
 
     public function index(){
+//        $view = view('admin.index');
         return view('admin.index');
+//        return $this->checkRoleUsaha($view);
     }
 }
