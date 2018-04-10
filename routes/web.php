@@ -41,11 +41,13 @@ Route::get('data_jadwal', 'TbJadwalController@index');
 //----------data Cutomer------//
 Route::get('/', 'Customer\HomesController@index');
 
-Route::get('/book', 'Customer\HomesController@booking');
+Route::get('/home', 'Customer\HomesController@home')->middleware('auth');
 
-Route::get('/lobi', 'Customer\HomesController@lobi');
+Route::get('/book/{id}', 'Customer\HomesController@booking')->middleware('auth');
 
-Route::get('/detail/{id}', 'Customer\HomesController@show');
+Route::get('/lobi', 'Customer\HomesController@lobi')->middleware('auth');
+
+Route::get('/detail/{id}', 'Customer\HomesController@show')->middleware('auth');
 
 
 
@@ -135,12 +137,12 @@ Route::get('/detail/{id}', 'Customer\HomesController@show');
 //    return View::make('customer.detail_lapangan',['item'=>$item, 'ids'=>$id]);
 //});
 
-Route::get('/book/{id}',function($id){
-    $items = json_decode(JSONDATA);
-    $item = $items[$id];
-    return View::make('customer.transaksi_1',['item'=>$item, 'ids'=>$id]);
-});
-
-Route::get('/lobby',function(){
-    return view('customer.lobby');
-});
+//Route::get('/book/{id}',function($id){
+//    $items = json_decode(JSONDATA);
+//    $item = $items[$id];
+//    return View::make('customer.transaksi_1',['item'=>$item, 'ids'=>$id]);
+//});
+//
+//Route::get('/lobby',function(){
+//    return view('customer.lobby');
+//});

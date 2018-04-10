@@ -59,7 +59,7 @@
           <form id="search-field" method="POST" action="/home/submitRequest.html">
             <div class="form-group">
               <label style="">No. Telepon</label>
-              <input type="text" class="form-control" name="no_telp" aria-describedby="emailHelp" placeholder="Enter your No. Telp">
+              <input disabled type="text" class="form-control" name="no_telp" value="{{Auth::user()->telp}}" aria-describedby="emailHelp" placeholder="Enter your No. Telp">
             </div>
 
           </form>
@@ -68,7 +68,7 @@
         <h4>Jam Operasional</h4> <p>08.00 - 22.00 WIB</p>
         <h4>Alamat</h4> <p></p>
         
-        <p><a href="/book/" class="btn btn-lg btn-outline-primary btn-block">Book Now</a></p>
+        <p><a href="/book/{{$lap->id}}" class="btn btn-lg btn-outline-primary btn-block">Book Now</a></p>
       </div>
     </div>
     <div class="col-sm-12">

@@ -15,13 +15,16 @@ class TbLapanganController extends Controller
 
     public function data_lapangan()
     {
-        $lap = tb_lapangan::where('store_id', Auth::user()->first()->id)->get();
-        return view('admin.data_lapangan')->with('lap', $lap);
+        $lap = tb_lapangan::where('store_id', Auth::user()->id)->get();
+//        var_dump($lap);
+        $view = view('admin.data_lapangan')->with('lap', $lap);
+        return $this->checkRoleUsaha($view);
     }
 
     public function tambah_lapangan()
     {
-        return view('admin.tambah_lapangan');
+        $view = view('admin.tambah_lapangan');
+        return $this->checkRoleUsaha($view);
     }
 
     public function store(Request $request)
