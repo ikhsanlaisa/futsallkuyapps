@@ -27,6 +27,22 @@
                                                            placeholder="Price" class="form-control">
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3"><label for="text" class=" form-control-label">Alamat</label></div>
+                        <div class="col-6 col-md-6"><input type="text" id="alamat" name="alamat"
+                                                           placeholder="Alamat" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <input style="font-size: small ; margin-left:59%" type="button" class="btn-info gllpSearchButton" value="Cari Koordinat">
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            <div class="gllpMap col-lg-11" style="font-size: medium" >Google Maps</div>
+                            <input type="hidden" class="gllpZoom" value="4"/>
+                        </div>
+                    </div>
+
 
                     <div class="row form-group">
                         <div class="col col-md-3"><label for="file-input" class=" form-control-label">Foto</label>
@@ -52,5 +68,6 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- /page content -->
 @endsection

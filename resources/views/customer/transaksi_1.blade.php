@@ -6,7 +6,15 @@
 
 @section('style')
 @endsection
-
+<?php
+$minggu = $_GET['minggu'];
+$jadwal = $_GET['jadwal'];
+$jadwal = explode("-", $jadwal);
+$day=$jadwal[0];
+$hour=$jadwal[1];
+$hari=['senin','selasa','rabu','kamis','jumat','sabtu','minggu'];
+$day=$hari[$day];
+?>
 @section('content')
     <section class="bar bg-primary no-mb color-white">
         <div class="container">
@@ -20,7 +28,8 @@
                         <div class="col-md-7">
                             <h4>Harga</h4>
                             <p>{{$laps->price}},-/jam</p>
-                            {{--          <h4>Alamat</h4> <p>{{$item->addr}}</p>--}}
+                            <h4>Alamat</h4> <p>{{$laps->alamat}}</p>
+                            <h4>Jadwal</h4> <p>{{strtoupper($day)}} {{$hour}}</p>
                         </div>
                     </div>
                 </div>

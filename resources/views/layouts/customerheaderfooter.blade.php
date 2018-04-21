@@ -32,6 +32,7 @@
     <link rel="apple-touch-icon" sizes="120x120" href="{{asset('img/apple-touch-icon-120x120.png')}}">
     <link rel="apple-touch-icon" sizes="144x144" href="{{asset('img/apple-touch-icon-144x144.png')}}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{asset('img/apple-touch-icon-152x152.png')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/jquery-gmaps-latlon-picker.css')}}"/>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -369,5 +370,26 @@
 <script src="{{asset('vendor/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
 <script src="{{asset('vendor/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
 <script src="{{asset('js/front.js')}}"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".gllpLatlonPicker").each(function () {
+            $obj = $(document).gMapsLatLonPicker();
+
+            $obj.params.strings.markerText = "Drag this Marker (example edit)";
+
+            $obj.params.displayError = function (message) {
+                console.log("MAPS ERROR: " + message); // instead of alert()
+            };
+
+            $obj.init($(this));
+        });
+    });
+</script>
+<script src="{{asset ('js/jquery-gmaps-latlon-picker.js')}}"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCiRGtghXH7VPZ_6WpZKBCqsovwRql6ww&callback=initMap"></script>
+<script>
+    $.gMapsLatLonPickerNoAutoInit = 1;
+</script>
 </body>
 </html>

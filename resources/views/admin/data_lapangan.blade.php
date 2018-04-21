@@ -23,6 +23,7 @@
                                     <th>No</th>
                                     <th>Nama Lapangan</th>
                                     <th>Harga</th>
+                                    <th>Alamat</th>
                                     <th>Foto</th>
                                     <th>Action</th>
                                 </tr>
@@ -34,6 +35,7 @@
                                     <td>{{$i++}}</td>
                                     <td>{{$l->name}}</td>
                                     <td>{{$l->price}}</td>
+                                    <td>{{$l->alamat}}</td>
                                     <td><img src="images/lapangan/{{$l->foto}}" class="img-thumbnail" width="100" height="100"/></td>
                                     {{--<td>$320,800</td>--}}
                                     <td>
@@ -94,6 +96,12 @@
                                 <input type="text" class="form-control" name="price" id="price">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Alamat :</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="alamat" id="alamat">
+                            </div>
+                        </div>
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="file-input" class=" form-control-label">Upload Foto</label></div>
                             <div class="col-12 col-md-9">
@@ -125,19 +133,20 @@
             document.getElementById('formEdit').action = "/updatedatalapangan/"+ id;
             console.log("diklik " + id);
             nama = document.getElementById('nama');
-            price = document.getElementById('nama');
+            price = document.getElementById('price');
+            alamat = document.getElementById('alamat');
             foto = document.getElementById('foto');
             $.ajax({
                 type: 'GET',
                 url: '/detaildatalapangan/' + id,
                 dataType: 'json',
                 success: function (laps) {
-                    if (laps[0] !== null) {
+                    if (laps !== null) {
                         console.log('data = ' + laps);
-                        console.log('datanya 2 = ' + laps[0].id);
-                        nama.value = laps[0].nama;
-                        price.value = laps[0].price;
-                        foto.value = laps[0].foto;
+                        console.log('datanya 2 = ' + laps.id);
+                        nama.value = laps.name;
+                        price.value = laps.price;
+                        alamat.value = laps.alamat;
                     } else {
                         console.log('null')
                         nama.value = "";

@@ -40,6 +40,7 @@ class TbLapanganController extends Controller
             $lap = new tb_lapangan();
             $lap->name = $request->input('name');
             $lap->price = $request->input('price');
+            $lap->alamat = $request->input('alamat');
             $lap->foto = $fields;
             $lap->store_id = Auth::user()->id;
             $result = $lap->save();
@@ -73,6 +74,9 @@ class TbLapanganController extends Controller
         }
         if ($request->input('price')){
         $lap->price = $request->input('price');
+        }
+        if ($request->input('alamat')){
+        $lap->alamat = $request->input('alamat');
         }
         $result = $lap->save();
         if ($result){
