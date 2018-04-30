@@ -41,6 +41,8 @@ class TbLapanganController extends Controller
             $lap->name = $request->input('name');
             $lap->price = $request->input('price');
             $lap->alamat = $request->input('alamat');
+            $lap->latitude = $request->input('lat');
+            $lap->longitude = $request->input('lang');
             $lap->foto = $fields;
             $lap->store_id = Auth::user()->id;
             $result = $lap->save();

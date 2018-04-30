@@ -12,7 +12,7 @@ class HomesController extends Controller
 {
 //    public function __construct()
 //    {
-//        $this->middleware('auth');
+//        $this->middleware('auth'->roles == 3);
 //    }
 
     public function index(){
@@ -32,7 +32,9 @@ class HomesController extends Controller
     public function show($id){
         $lap = tb_lapangan::find($id);
 //        return view('customer.detail_lapangan')->with('lap', $lap);
-        $view = view('customer.detail_lapangan')->with('lap', $lap);
+        $lat = $lap->latitude;
+        $long = $lap->longitude;
+        $view = view('customer.detail_lapangan')->with(['lap'=>$lap, 'lat' =>$lat, 'long', $long]);
         return $this->checkRoleCustomer($view);
     }
 

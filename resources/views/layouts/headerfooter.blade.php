@@ -27,6 +27,7 @@
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="{{asset('scss/style.css')}}">
     <link href="{{asset('css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/jquery-gmaps-latlon-picker.css')}}"/>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -266,5 +267,26 @@
         });
     })(jQuery);
 </script>
+<script>
+    $(document).ready(function () {
+        $(".gllpLatlonPicker").each(function () {
+            $obj = $(document).gMapsLatLonPicker();
+
+            $obj.params.strings.markerText = "Drag this Marker (example edit)";
+
+            $obj.params.displayError = function (message) {
+                console.log("MAPS ERROR: " + message); // instead of alert()
+            };
+
+            $obj.init($(this));
+        });
+    });
+</script>
+<script src="{{asset ('js/jquery-gmaps-latlon-picker.js')}}"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzWiABwK8HB07dWxGNYQuHjBIHjhqAC8"></script>
+<script>
+    $.gMapsLatLonPickerNoAutoInit = 1;
+</script>
+
 </body>
 </html>

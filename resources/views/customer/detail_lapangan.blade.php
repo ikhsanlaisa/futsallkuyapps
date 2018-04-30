@@ -63,7 +63,24 @@
                     <p>08.00 - 22.00 WIB</p>
                     <h4>Alamat</h4>
                     <p>{{$lap->alamat}}</p>
-                    <p><a onclick="showModal()" title="edit" name="button"
+                    <div id="map"></div>
+                    <script>
+                        function initMap() {
+                            var uluru = {lat: lat, lng: long};
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 4,
+                                center: uluru
+                            });
+                            var marker = new google.maps.Marker({
+                                position: uluru,
+                                map: map
+                            });
+                        }
+                    </script>
+                    <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCiRGtghXH7VPZ_6WpZKBCqsovwRql6ww&callback=initMap">
+                    </script>
+                    <p><a onclick="showModal({{ $lap->id }})" title="edit" name="button"
                           data-toggle="modal" data-target="#modaledit" class="btn btn-lg btn-outline-primary btn-block">Lihat
                             Lokasi</a></p>
 
@@ -148,8 +165,8 @@
                 </div>
                 <div id="map"></div>
                 <script>
-                    function initMap() {
-                        var uluru = {lat: -25.363, lng: 131.044};
+                    function initMap(lap) {
+                        var uluru = {lat: lap.latitude, lng: lap.longitude;
                         var map = new google.maps.Map(document.getElementById('map'), {
                             zoom: 4,
                             center: uluru
