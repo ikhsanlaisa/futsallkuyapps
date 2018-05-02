@@ -45,7 +45,7 @@ class HomesController extends Controller
         return $this->checkRoleCustomer($view);
     }
 
-    public function lobi(){
+    public function lobby(){
         return view('customer.lobby');
     }
 }

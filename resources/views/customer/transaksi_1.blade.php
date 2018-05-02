@@ -10,13 +10,14 @@
 $minggu = $_GET['minggu'];
 $jadwal = $_GET['jadwal'];
 $jadwal = explode("-", $jadwal);
-$day=$jadwal[0];
-$hour=$jadwal[1];
-$hari=['senin','selasa','rabu','kamis','jumat','sabtu','minggu'];
-$day=$hari[$day];
+$day = $jadwal[0];
+$hour = $jadwal[1];
+$hari = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
+$day = $hari[$day];
 ?>
 @section('content')
     <section class="bar bg-primary no-mb color-white">
+        <form action="/post_book" method="post" enctype="multipart/form-data" class="form-horizontal">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -25,11 +26,19 @@ $day=$hari[$day];
                         <div class="col-md-5">
                             <img src="{{asset('images/lapangan/')}}/{{$laps->foto}}" style="width: 98%;">
                         </div>
+                        @php
+                            $days = strtoupper($day);
+                            $hours = $hour;
+                            $lapang = $laps->id;
+                            $price = $laps->price;
+                        @endphp
                         <div class="col-md-7">
                             <h4>Harga</h4>
                             <p>{{$laps->price}},-/jam</p>
-                            <h4>Alamat</h4> <p>{{$laps->alamat}}</p>
-                            <h4>Jadwal</h4> <p>{{strtoupper($day)}} {{$hour}}</p>
+                            <h4>Alamat</h4>
+                            <p>{{$laps->alamat}}</p>
+                            <h4>Jadwal</h4>
+                            <p>{{strtoupper($day)}} {{$hour}}</p>
                         </div>
                     </div>
                 </div>
@@ -90,11 +99,25 @@ $day=$hari[$day];
                     <div class="col-lg-8 text-center p-3">
                         <h3>Lanjutkan ke Pembayaran?</h3>
                     </div>
-                    <div class="col-lg-4 text-center p-3"><a href="#"
-                                                             class="btn btn-template-outlined-white">Lanjutkan</a></div>
+                        {{csrf_field()}}
+                        <div class="col-lg-4 text-center p-3">
+                            <button type="submit" name="submit" class="btn btn-template-outlined-white">
+                                <i class="fa fa-dot-circle-o"></i> Lanjutkan
+                            </button>
+                        </div>
+                        <input type="hidden" id="days" name="days"
+                               placeholder="Nama Lapangan" value="{{$days}}" class="form-control" >
+                        <input type="hidden" id="hours" name="hours"
+                               placeholder="Nama Lapangan" value="{{$hours}}" class="form-control" >
+                        <input type="hidden" id="laps" name="laps"
+                               placeholder="Nama Lapangan" value="{{$lapang}}" class="form-control" >
+                        <input type="hidden" id="price" name="price"
+                               placeholder="Nama Lapangan" value="{{$price}}" class="form-control" >
+
                 </div>
             </div>
         </div>
+        </form>
     </section>
 
     <section class="bar bg-white">

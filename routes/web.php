@@ -45,11 +45,15 @@ Route::get('/home', 'Customer\HomesController@home')->middleware('auth');
 
 Route::get('/book/{id}', 'Customer\HomesController@booking')->middleware('auth');
 
-Route::get('/lobi', 'Customer\HomesController@lobi')->middleware('auth');
+//Route::get('/lobi', 'Customer\HomesController@lobi')->middleware('auth');
 
 Route::get('/detail/{id}', 'Customer\HomesController@show')->middleware('auth');
 
+Route::post('/post_book', 'Customer\CustomerTransactionController@store')->middleware('auth');
 
+Route::get('/booking/{code}', 'Customer\CustomerTransactionController@show')->middleware('auth');
+
+Route::get('/lobby', 'Customer\HomesController@lobby')->middleware('auth');
 
 
 //$json = '[
