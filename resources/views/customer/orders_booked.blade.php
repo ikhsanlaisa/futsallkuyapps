@@ -92,7 +92,8 @@ $json_booking = '[
 	}
 ]';
 $items = json_decode($json_booking);
-$item = $items[4];
+// $item = $items[4];
+$item = $booking;
 $server = "http://".getHostByName(getHostName());
 $code = $server."/confirm/".$item->id;
 ?>
@@ -108,16 +109,16 @@ $code = $server."/confirm/".$item->id;
 					</div>
 				</div>
 				<div class="col-md-6 detail-place">
-					<h4>{{$item->tempat->title}}</h4>
-					<p>{{$item->tempat->addr}}</p>
+					<h4>{{$item->lapangan->name}}</h4>
+					<p>{{$item->lapangan->alamat}}</p>
 					<hr/>
 					<div class="row">
 						<div class="col-md-7">
 							<h5>Jadwal</h5> <p>{{$item->jadwal}}</p>
 						</div>
 						<div class="col-md-5" style="text-align: left;">
-							<h6><i class="fa fa-user-circle"></i> {{$item->user}}</h6>
-							<h6><i class="fa fa-group"></i> {{$item->team}}</h6>
+							<h6><i class="fa fa-user-circle"></i> {{$item->customer->email}}</h6>
+							<h6><i class="fa fa-group"></i> {{$item->customer->email}}</h6>
 						</div>
 					</div>
 				</div>
@@ -135,16 +136,20 @@ $code = $server."/confirm/".$item->id;
 		<div class="col-md-1"></div>
 	</div>
 </div>
+@if($user->roles != 3) 
 <div class="row">
 	<div class="col-md-12 text-center" style="margin: 4% 0;">
-		<a href='/lobby' class="btn btn-primary" style="width: 30%;">Konfirmasi Pemesanan <i class="fa fa-check-circle"></i></a>
+		<a href='/payable/{{$item->id}}' class="btn btn-primary" style="width: 30%;">Konfirmasi Pemesanan <i class="fa fa-check-circle"></i></a>
 	</div>
 </div>
 </div>
+@endif
 @endsection
 @section('script')
 <script type="text/javascript" src="{{asset('js/jquery.qrcode.min.js')}}"></script>
 <script type="text/javascript">
 	$('#qrcode').qrcode({width: 250,height: 250,text: "{{$code}}"});
+	$('#qrcode').find('canvas').hide();
+        $('#qrcode').find('canvas:nth-child(1)').show();
 </script>
 @endsection

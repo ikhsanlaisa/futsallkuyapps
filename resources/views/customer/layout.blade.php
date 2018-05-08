@@ -73,7 +73,7 @@
         <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
             <div class="container">
                 <a href="/" class="navbar-brand home"><img src="{{asset('images/template/logo.png')}}"
-                                                           alt="Universal logo" class="d-none d-md-inline-block"><img
+                                                           alt="Universal logo" class="d-none d-md-inline-block" style="height: 42px;"><img
                             src="{{asset('images/template/logo-small.png')}}" alt="Universal logo"
                             class="d-inline-block d-md-none"><span class="sr-only">Universal - go to homepage</span></a>
                 <button type="button" data-toggle="collapse" data-target="#navigation"
@@ -83,6 +83,7 @@
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item"><a href="javascript: void(0)">About</a></li>
                         <li class="nav-item"><a href="javascript: void(0)">Features</a></li>
+                        <li class="nav-item"><a href="javascript: void(0)">Support</a></li>
                         @guest
                         <li class="nav-item"><a href="/home">Login
                             </a></li>
@@ -92,6 +93,8 @@
                                             class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-item">
+                                        <a href="/my-booking" class="nav-link">My Booking</a>
+                                        <a href="/topup" class="nav-link">Top Up</a>
                                         <a href="{{ route('logout') }}" class="nav-link"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

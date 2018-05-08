@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('photo')->nullable();
+            $table->integer('saldo')->default(0);
             $table->integer('roles');
             $table->rememberToken();
             $table->timestamps();

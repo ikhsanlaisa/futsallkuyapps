@@ -127,8 +127,9 @@ $items = json_decode($json_booking);
 				<!-- Tab Navigation -->
 				<div>
 					<nav id="myTab" role="tablist" class="nav nav-tabs">
-						<a id="tab-1" data-toggle="tab" href="#tab1" role="tab" class="nav-item nav-link active show">Pemesanan Aktif</a>
-						<a id="tab-2" data-toggle="tab" href="#tab2" role="tab" class="nav-item nav-link">Riwayat Pemesanan</a>
+						<a id="tab-1" data-toggle="tab" href="#tab1" role="tab" class="nav-item nav-link active show">Top-Up Aktif</a>
+						<a id="tab-2" data-toggle="tab" href="#tab2" role="tab" class="nav-item nav-link">Riwayat Top-Up</a>
+						<a href="#tab2" role="tab" class="nav-item nav-link">Top-Up Now</a>
 						<!-- <a id="tab4-5-tab" data-toggle="tab" href="#tab4-5" role="tab" aria-controls="tab4-5" aria-selected="false" class="nav-item nav-link">Second tab</a> -->
 					</nav>
 					<div id="nav-tabContent" class="tab-content" style="">

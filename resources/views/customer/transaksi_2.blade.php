@@ -14,7 +14,7 @@
 
 @section('content')
     <?php
-    $codeText = $booking->code;
+    $codeText = $booking->id;
     // $code = md5($codeText);
     $code = $codeText;
     $server = "http://" . getHostByName(getHostName());
@@ -46,6 +46,8 @@
     <script type="text/javascript" src="{{asset('js/jquery.qrcode.min.js')}}"></script>
     <script type="text/javascript">
         $('#qrcodex').qrcode({width: 300, height: 300, text: "{{$code}}"});
+        $('#qrcodex').find('canvas').hide();
+        $('#qrcodex').find('canvas:nth-child(1)').show();
         var preloader = $('#preloader'), bookpay = $('#bookpay'), txtstatus = $('#textstatus');
         $(document).ready(() => {
             preloader.show();
@@ -55,8 +57,8 @@
                     preloader.hide();
                     txtstatus.hide();
                     bookpay.fadeIn(2000);
-                }, 4000);
-            }, 4000);
+                }, 2000);
+            }, 2000);
         });
     </script>
 @endsection

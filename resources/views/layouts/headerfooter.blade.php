@@ -283,7 +283,7 @@
     });
 </script>
 <script src="{{asset ('js/jquery-gmaps-latlon-picker.js')}}"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzWiABwK8HB07dWxGNYQuHjBIHjhqAC8"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzWiABwK8HB07dWxGNYQuHjBIHjhqAC8&callback=myMaps"></script>
 <script>
     $.gMapsLatLonPickerNoAutoInit = 1;
 </script>

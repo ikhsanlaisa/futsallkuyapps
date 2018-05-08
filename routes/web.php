@@ -52,8 +52,19 @@ Route::get('/detail/{id}', 'Customer\HomesController@show')->middleware('auth');
 Route::post('/post_book', 'Customer\CustomerTransactionController@store')->middleware('auth');
 
 Route::get('/booking/{code}', 'Customer\CustomerTransactionController@show')->middleware('auth');
+Route::get('/booked/{code}', 'Customer\CustomerTransactionController@book_show')->middleware('auth');
 
 Route::get('/lobby', 'Customer\HomesController@lobby')->middleware('auth');
+
+Route::get('/my-booking', 'Customer\HomesController@mybooks')->middleware('auth');
+
+Route::get('/topup', 'Customer\HomesController@topup_show')->middleware('auth');
+Route::get('/my-topup', 'Customer\HomesController@topup_my_show')->middleware('auth');
+Route::post('/topup/invoice/', 'Customer\HomesController@topup_invoice_show')->middleware('auth');
+Route::post('/topup_post', 'Customer\HomesController@topup_post')->middleware('auth');
+Route::post('/topup/order', 'Customer\HomesController@topup_order')->middleware('auth');
+
+Route::get('/payable/{code}', 'Customer\CustomerTransactionController@pay_booking')->middleware('auth');
 
 
 //$json = '[

@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'alamat', 'telp', 'photo', 'roles'
+        'name', 'email', 'password', 'alamat', 'telp', 'photo', 'roles',
     ];
 
     /**
@@ -27,7 +27,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function lap(){
+    public function lap()
+    {
         return $this->hasMany('App\tb_lapangan', 'store_id');
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 }

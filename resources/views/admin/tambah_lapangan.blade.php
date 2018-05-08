@@ -24,6 +24,14 @@
                             </div>
                         </div>
                         <div class="row form-group">
+                            <div class="col col-md-3"><label for="text" class=" form-control-label">Nama
+                                    Lapangan</label>
+                            </div>
+                            <div class="col-6 col-md-6"><input type="text" id="description" name="description"
+                                                               placeholder="Deskripsi Lapangan" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
                             <div class="col col-md-3"><label for="text" class=" form-control-label">Price</label></div>
                             <div class="col-6 col-md-6"><input type="text" id="price" name="price"
                                                                placeholder="Price" class="form-control">
@@ -52,7 +60,7 @@
                         </div>
                         <div class="row form-group {{ $errors->has('Business address') ? ' has-error' : '' }}">
                             <div class="col col-md-12">
-                                <div class="gllpMap col-6 col-md-6" style="font-size:10px">Google Maps</div>
+                                <div class="gllpMap" style="font-size:10px; width: 100%;">Google Maps</div>
                                 <input type="hidden" class="gllpZoom" value="4"/>
                             </div>
                         </div>
@@ -104,10 +112,18 @@
         </div>
     </div>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function initMap(){
+            var map = new google.maps.Map(document.getElementById('gllpMap'), {
+                center: {lat: -6.914744, lng: 107.609810},
+                zoom: 5
+            });
+        }
+    </script>
     {{--<script>--}}
     {{--function myMap() {--}}
     {{--var mapProp= {--}}
-    {{--center:new google.maps.LatLng(51.508742,-0.120850),--}}
+    {{--center:new google.maps.LatLng(-6.914744,107.609810),--}}
     {{--zoom:5,--}}
     {{--};--}}
     {{--var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);--}}
