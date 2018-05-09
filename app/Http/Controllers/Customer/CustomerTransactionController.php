@@ -20,8 +20,7 @@ class CustomerTransactionController extends Controller
 
     public function store(Request $request)
     {
-        $day     = $request->input('days');
-        $hour    = $request->input('hours');
+        $jadwal     = $request->input('jadwal');
         $laps    = $request->input('laps');
         $lapps   = $request->input('price');
         $status1 = "ready";
@@ -32,7 +31,7 @@ class CustomerTransactionController extends Controller
         $booking              = new Booking();
         $booking->lap_id      = $laps;
         $booking->customer_id = Auth::user()->id;
-        $booking->jadwal      = $day . " " . $hour;
+        $booking->jadwal      = $jadwal;
         $booking->tarif       = $lapps;
         $booking->tariftotal  = $lapps;
         $booking->tariftype   = "h";
@@ -46,7 +45,7 @@ class CustomerTransactionController extends Controller
         }
         $result = $booking->save();
         if ($result) {
-            return redirect('/booking/' . $code);
+            return redirect('/book/'.$code.'/created/');
         } else {
             return redirect('/home');
         }

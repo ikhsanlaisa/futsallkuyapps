@@ -85,7 +85,7 @@
                         <li class="nav-item"><a href="javascript: void(0)">Features</a></li>
                         <li class="nav-item"><a href="javascript: void(0)">Support</a></li>
                         @guest
-                        <li class="nav-item"><a href="/home">Login
+                        <li class="nav-item"><a href="/login">Login
                             </a></li>
                         @else
                             <li class="nav-item dropdown"><a href="javascript: void(0)" class="dropdown-toggle"

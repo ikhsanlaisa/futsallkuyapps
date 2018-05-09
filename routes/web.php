@@ -22,50 +22,77 @@ Auth::routes();
 Route::get('/admin', 'indexController@index');
 
 //------data lapangan-----
-Route::get('/data_lapangan', 'TbLapanganController@data_lapangan');
+// Route::get('/data_lapangan', 'TbLapanganController@data_lapangan');
 
-Route::get('/tambah_lapangan', 'TbLapanganController@tambah_lapangan');
+// Route::get('/tambah_lapangan', 'TbLapanganController@tambah_lapangan');
 
-Route::post('/post_lapangan', 'TbLapanganController@store');
+// Route::post('/post_lapangan', 'TbLapanganController@store');
 
-Route::get('detaildatalapangan/{id}', 'TbLapanganController@show');
+// Route::get('detaildatalapangan/{id}', 'TbLapanganController@show');
 
-Route::put('updatedatalapangan/{id}', 'TbLapanganController@update');
+// Route::put('updatedatalapangan/{id}', 'TbLapanganController@update');
 
-Route::delete('deletedatalapangan/{id}', 'TbLapanganController@destroy');
+// Route::delete('deletedatalapangan/{id}', 'TbLapanganController@destroy');
 
-//----data jadwal------//
+// //----data jadwal------//
 
-Route::get('data_jadwal', 'TbJadwalController@index');
+// Route::get('data_jadwal', 'TbJadwalController@index');
 
-//----------data Cutomer------//
+// //----------data Cutomer------//
+// Route::get('/', 'Customer\HomesController@index');
+
+// Route::get('/home', 'Customer\HomesController@home')->middleware('auth');
+
+// Route::get('/book/{id}', 'Customer\HomesController@booking')->middleware('auth');
+
+// //Route::get('/lobi', 'Customer\HomesController@lobi')->middleware('auth');
+
+// Route::get('/detail/{id}', 'Customer\HomesController@show')->middleware('auth');
+
+// Route::post('/post_book', 'Customer\CustomerTransactionController@store')->middleware('auth');
+
+// Route::get('/booking/{code}', 'Customer\CustomerTransactionController@show')->middleware('auth');
+// Route::get('/booked/{code}', 'Customer\CustomerTransactionController@book_show')->middleware('auth');
+
+// Route::get('/lobby', 'Customer\HomesController@lobby')->middleware('auth');
+
+// Route::get('/my-booking', 'Customer\HomesController@mybooks')->middleware('auth');
+
+// Route::get('/topup', 'Customer\HomesController@topup_show')->middleware('auth');
+// Route::get('/my-topup', 'Customer\HomesController@topup_my_show')->middleware('auth');
+// Route::post('/topup/invoice/', 'Customer\HomesController@topup_invoice_show')->middleware('auth');
+// Route::post('/topup_post', 'Customer\HomesController@topup_post')->middleware('auth');
+// Route::post('/topup/order', 'Customer\HomesController@topup_order')->middleware('auth');
+
+// Route::get('/payable/{code}', 'Customer\CustomerTransactionController@pay_booking')->middleware('auth');
+
+/*
+ * LANDING CUSTOMER VIEW
+ */
 Route::get('/', 'Customer\HomesController@index');
 
-Route::get('/home', 'Customer\HomesController@home')->middleware('auth');
+/*
+ * LAPANGAN CUSTOMER VIEW
+ */
+Route::get('/lapangan', 'Customer\HomesController@data_lapangan');
+Route::get('/lapangan/{id}', 'Customer\HomesController@show');
+Route::get('/lapangan/{id}/book', 'Customer\HomesController@booking')->middleware('auth');
+/*
+ * LAPANGAN ADMIN VIEW
+ */
+Route::get('/admin/lapangan/new', 'LapanganController@tambah_lapangan');
+Route::get('/admin/lapangan/new', 'LapanganController@tambah_lapangan');
+Route::post('/admin/lapangan/create', 'LapanganController@store');
+Route::get('/admin/lapangan/{$id}/edit', 'LapanganController@store');
+Route::put('/admin/lapangan/{$id}/update', 'LapanganController@store');
+Route::delete('/admin/lapangan/{$id}/delete', 'LapanganController@destroy');
 
-Route::get('/book/{id}', 'Customer\HomesController@booking')->middleware('auth');
 
-//Route::get('/lobi', 'Customer\HomesController@lobi')->middleware('auth');
-
-Route::get('/detail/{id}', 'Customer\HomesController@show')->middleware('auth');
-
+/*
+ * BOOK CUSTOMER VIEW
+ */
 Route::post('/post_book', 'Customer\CustomerTransactionController@store')->middleware('auth');
-
-Route::get('/booking/{code}', 'Customer\CustomerTransactionController@show')->middleware('auth');
-Route::get('/booked/{code}', 'Customer\CustomerTransactionController@book_show')->middleware('auth');
-
-Route::get('/lobby', 'Customer\HomesController@lobby')->middleware('auth');
-
-Route::get('/my-booking', 'Customer\HomesController@mybooks')->middleware('auth');
-
-Route::get('/topup', 'Customer\HomesController@topup_show')->middleware('auth');
-Route::get('/my-topup', 'Customer\HomesController@topup_my_show')->middleware('auth');
-Route::post('/topup/invoice/', 'Customer\HomesController@topup_invoice_show')->middleware('auth');
-Route::post('/topup_post', 'Customer\HomesController@topup_post')->middleware('auth');
-Route::post('/topup/order', 'Customer\HomesController@topup_order')->middleware('auth');
-
-Route::get('/payable/{code}', 'Customer\CustomerTransactionController@pay_booking')->middleware('auth');
-
+Route::get('/book/{id}/created', 'Customer\CustomerTransactionController@show');
 
 //$json = '[
 //	{

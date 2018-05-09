@@ -13,13 +13,19 @@ class CreateTbLapangansTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_lapangans', function (Blueprint $table) {
+        Schema::create('Lapangans', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('store_id')->unsigned()->nullable();
             $table->string('name');
             $table->string('description');
-            $table->string('price');
-            $table->string('foto');
-            $table->integer('store_id')->unsigned()->nullable();
+            $table->string('address');
+            $table->string('latlon')->nullable();
+            $table->integer('price');
+            $table->char('pricetype', 2)->nullable();
+            $table->string('displayphoto');
+            $table->string('houropen')->default('00:00');
+            $table->string('hourclose')->default('23:59');
+
             $table->timestamps();
 
             $table->foreign('store_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

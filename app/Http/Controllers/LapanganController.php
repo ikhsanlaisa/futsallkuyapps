@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\tb_lapangan;
+use App\Lapangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TbLapanganController extends Controller
+class LapanganController extends Controller
 {
     public function __construct()
     {
@@ -15,7 +15,7 @@ class TbLapanganController extends Controller
 
     public function data_lapangan()
     {
-        $lap = tb_lapangan::where('store_id', Auth::user()->id)->get();
+        $lap = Lapangan::where('store_id', Auth::user()->id)->get();
 //        var_dump($lap);
         $view = view('admin.data_lapangan')->with('lap', $lap);
         return $this->checkRoleUsaha($view);
@@ -37,13 +37,14 @@ class TbLapanganController extends Controller
 
 //        $user = Auth::user()->id;
 //        if ($user) {
-            $lap = new tb_lapangan();
+            $lap = new Lapangan();
             $lap->name = $request->input('name');
             $lap->description = $request->input('description');
             $lap->price = $request->input('price');
-            $lap->alamat = $request->input('alamat');
+            $lap->pricetype = $request->input('pricetype');
+            $lap->address = $request->input('alamat');
             $lap->latlon = $request->input('lat')."|".$request->input('lang');
-            $lap->foto = $fields;
+            $lap->displayphoto = $fields;
             $lap->store_id = Auth::user()->id;
             $result = $lap->save();
 
@@ -56,12 +57,12 @@ class TbLapanganController extends Controller
     }
 
     public function show($id){
-        $laps = tb_lapangan::find($id);
+        $laps = Lapangan::find($id);
         return json_encode($laps);
     }
 
     public function update(Request $request, $id){
-        $lap = tb_lapangan::find($id);
+        $lap = Lapangan::find($id);
 
         $filepath = 'images/lapangan/';
         if ($request->input('foto')){
@@ -89,7 +90,7 @@ class TbLapanganController extends Controller
     }
 
     public function destroy($id){
-        $lap = tb_lapangan::find($id);
+        $lap = Lapangan::find($id);
         $result = $lap->delete();
         if ($result){
             return redirect('/data_lapangan')->with(['message' => 'Berhasil hapus data lapangan']);

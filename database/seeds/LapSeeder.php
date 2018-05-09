@@ -1,5 +1,5 @@
 <?php
-use App\tb_lapangan;
+use App\Lapangan;
 use Illuminate\Database\Seeder;
 
 class LapSeeder extends Seeder
@@ -12,53 +12,59 @@ class LapSeeder extends Seeder
     public function run()
     {
         //
-        tb_lapangan::create([
+        Lapangan::create([
             'name' => 'IFI Futsal',
             'description' => '',
-            'price' => '40000',
-            'alamat' => 'Jl. Sukabirus No.7, Citeureup',
+            'price' => 40000,
+            'pricetype' => 'HH',
+            'address' => 'Jl. Sukabirus No.7, Citeureup',
             'latlon' => '',
-            'foto' => ''
+            'displayphoto' => ''
         ]);
-        tb_lapangan::create([
+        Lapangan::create([
             'name' => 'Bos Futsal',
             'description' => '',
-            'price' => '20000',
-            'alamat' => 'Jl. Cikoneng, Bojongsoang, Bandung, Jawa Barat 40288',
+            'price' => 30000,
+            'pricetype' => 'HH',
+            'address' => 'Jl. Cikoneng, Bojongsoang, Bandung, Jawa Barat 40288',
             'latlon' => '',
-            'foto' => ''
+            'displayphoto' => ''
         ]);
-        tb_lapangan::create([
+        Lapangan::create([
             'name' => 'MU Futsal',
             'description' => '',
-            'price' => '25000',
-            'alamat' => 'Jl. Sadang No.19-27, Margahayu Tengah, Margahayu, Bandung, Jawa Barat 40225',
+            'price' => 32000,
+            'pricetype' => 'HH',
+            'address' => 'Jl. Sadang No.19-27, Margahayu Tengah, Margahayu, Bandung, Jawa Barat 40225',
             'latlon' => '',
-            'foto' => ''
+            'displayphoto' => ''
         ]);
-        tb_lapangan::create([
+        Lapangan::create([
             'name' => 'Centro Futsal',
             'description' => '',
-            'price' => '40000',
-            'alamat' => 'Jl. Margacinta No.48, Cijaura, Buahbatu, Kota Bandung, Jawa Barat 40286',
+            'price' => 34000,
+            'pricetype' => 'HH',
+            'address' => 'Jl. Margacinta No.48, Cijaura, Buahbatu, Kota Bandung, Jawa Barat 40286',
             'latlon' => '',
-            'foto' => ''
+            'displayphoto' => ''
         ]);
-        tb_lapangan::create([
+        Lapangan::create([
             'name' => 'Bisoc Futsal',
             'description' => '',
-            'price' => '40000',
-            'alamat' => 'Jl. Batununggal Lestari No.1, Batununggal, Bandung Kidul, Kota Bandung, Jawa Barat 40266',
+            'price' => 40000,
+            'pricetype' => 'HH',
+            'address' => 'Jl. Batununggal Lestari No.1, Batununggal, Bandung Kidul, Kota Bandung, Jawa Barat 40266',
             'latlon' => '',
-            'foto' => ''
+            'displayphoto' => ''
         ]);
-        tb_lapangan::create([
+        Lapangan::create([
             'name' => 'Rajawali Futsal',
             'description' => '',
-            'price' => '40000',
-            'alamat' => 'Citeureup, Dayeuhkolot, Bandung, West Java 40257',
+            'price' => 20000,
+            'pricetype' => 'HH',
+            'address' => 'Citeureup, Dayeuhkolot, Bandung, West Java 40257',
             'latlon' => '',
-            'foto' => ''
+            'displayphoto' => ''
         ]);
     }
 }

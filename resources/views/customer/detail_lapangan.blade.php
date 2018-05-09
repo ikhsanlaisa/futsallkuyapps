@@ -41,6 +41,10 @@
 @endsection
 
 @section('content')
+<?php 
+date_default_timezone_set("Asia/Jakarta");
+#var_dump($lap); 
+?>
     <div id="heading-breadcrumbs">
         <div class="container">
             <div class="row d-flex align-items-center flex-wrap">
@@ -65,9 +69,7 @@
         <div class="heading">
             <h2>Deskripsi</h2>
         </div>
-        <p class="lead no-mb">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-            egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit
-            amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <p class="lead no-mb">{{$lap->description}}</p>
     </div>
 
     <section class="bar">
@@ -88,7 +90,7 @@
                     <p>{{$lap->price}},-/jam</p>
                     {{--<h4>Rating</h4> <p></p>--}}
                     <h4>Jam Operasional</h4>
-                    <p>08.00 - 22.00 WIB</p>
+                    <p>{{$lap->houropen}} - {{$lap->hourclose}}</p>
                     <h4>Alamat</h4>
                     <p>{{$lap->alamat}}</p>
                     <p style="height:300px;" id="map-block" data-addr="{{$lap->name}}, {{$lap->alamat}}"></p>
@@ -101,75 +103,120 @@
 
             <!-- BLOCK JADWAL -->
             <div class="col-sm-12">
-                <form action="/book/{{$lap->id}}" method="GET" id="booknow">
+                <form action="/lapangan/{{$lap->id}}/book" method="GET" id="booknow">
                     <div class="heading">
                         <h3>Jadwal Tersedia</h3>
                     </div>
                     <div class="" style="margin:10px 0;">
                         <?php
-                        $year = date('Y');
-                        $month = date('m');
-                        $currentWeekYear = date('W');
-                        $currentWeek = weekOfMonth($month);
-                        $nextWeek = $currentWeek+1;
-                        $prevWeek = $currentWeek-1;
-                        $toWeek = weekOfMonth($month);
-                        $toWeek += isset($_GET['week'])?$_GET['week']:0;
-                        $numberOfWeekFromThisMonth = weeks($month,$year);
-                        $getDateFromThisWeek = date('d M Y', strtotime($year."W".$currentWeekYear));
+                        $week = (object) array();
+                        $week->year = date('Y');
+                        $week->month = date('m');
+                        $week->weekOfYear = date('W');
+                        $week->weekOfMonth = weekOfMonth($week->month);
+                        $week->manyWeekOfMonth = weeks($week->month,$week->year);
+                        $week->beginDateOfMonth = date('Y-m-01', strtotime($week->year."W".$week->weekOfYear));
+                        $week->lastDateOfMonth = date('Y-m-t', strtotime($week->year."W".$week->weekOfYear));
+                        $week->beginWeekOfMonth = date('W', strtotime($week->beginDateOfMonth));
+                        $week->lastWeekOfMonth = date('W', strtotime($week->lastDateOfMonth));
+                        $week->set = isset($_GET['week'])?$_GET['week']:$week->weekOfYear;
+                        $week->isWeekInThisMonth = $week->set==''?'':($week->set>$week->lastWeekOfMonth || $week->set<$week->beginWeekOfMonth)?false:true;
+                        $week->currentWeek = ($week->isWeekInThisMonth==true)?$week->set:$week->weekOfYear;
+                        $week->nextWeek = ($week->isWeekInThisMonth==true)?$week->currentWeek+1:$week->lastWeekOfMonth;
+                        $week->prevWeek = ($week->isWeekInThisMonth==true)?$week->currentWeek-1:$week->beginWeekOfMonth;
+                        $week->beginDateOfWeek = date('Y-m-d', strtotime("last sunday midnight", strtotime($week->year."W".$week->currentWeek)));
+                        $week->lastDateOfWeek = date('Y-m-d', strtotime("next saturday", strtotime($week->year."W".$week->currentWeek)));
                         ?>
                         <div class="input-group input-group-lg">
                             <div class="input-group-append">
-                                <a href='?week={{$prevWeek-5}}' class="btn btn-secondary "><i class="fa fa-chevron-left"></i></a>
+                                <a href='?week={{$week->prevWeek}}' class="btn btn-secondary "><i class="fa fa-chevron-left"></i></a>
                                 &nbsp;
                             </div>
                             <div class="form-control" style="text-align: center;">
-                                Minggu ke {{$toWeek}} &mdash; {{$getDateFromThisWeek}}
+                                  <!-- <?php echo date("d M Y", strtotime($week->beginDateOfWeek)); ?> &mdash; <?php echo date("d M Y", strtotime($week->lastDateOfWeek)); ?> -->
+                                  <select class="form-control form-control-lg" onchange="window.location.href='?week='+this.value;" style="text-indent: 30%; ">
+                                    @for($w=$week->beginWeekOfMonth; $w<=$week->lastWeekOfMonth; $w++)
+                                    <option value="{{$w}}" {{$w==$week->currentWeek?'selected':''}}>
+                                    Minggu ke-{{$w}} 
+                                    (<?php echo date('d M Y', strtotime("last sunday midnight", strtotime($week->year."W".$w))); ?> &mdash; <?php echo date('d M Y', strtotime("next saturday", strtotime($week->year."W".$w))); ?>)
+                                    </option>
+                                    @endfor
+                                  </select>
                             </div>
                             <div class="input-group-append">
                                 &nbsp;
-                                <a href='?week={{5-$nextWeek}}' class="btn btn-secondary "><i class="fa fa-chevron-right"></i></a>
+                                <a href='?week={{$week->nextWeek}}' class="btn btn-secondary "><i class="fa fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="jadwal" style="width:100%; overflow-y: auto;">
-                        <input type="hidden" name="minggu" value="{{date('W')}}">
+                        <!-- <input type="hidden" name="minggu" value="{{date('W')}}"> -->
                         <?php
                         $hari=['minggu','senin','selasa','rabu','kamis','jumat','sabtu'];
                         $terisi = ['13-1','13-4','17-5','22-6'];
+                        $isi = ['2018-05-22T11:00:00Z', '2018-05-16T10:00:00Z', '2018-05-12T10:00:00Z', '2018-05-30T08:00:00Z'];
+                        $isi = array();
+
+                        $bookings = $lap->booking;
+                        foreach ($bookings as $key => $book) {
+                            array_push($isi, $book->jadwal);
+                        }
+
+                        //var_dump($isi);
                         ?>
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th></th>
-                                @foreach($hari as $d)
-                                    <th style="text-align: center;">{{ucfirst($d)}}</th>
+                                @foreach($hari as $i => $d)
+                                    <th style="text-align: center;">{{ucfirst($d)}}<span style="display:block;font-size: 10px;">{{date('d M Y', strtotime($week->year.'W'.$week->currentWeek.'-'.$i))}}</span></th>
                                 @endforeach
                             </tr>
 
+                            <!-- TIME ROW -->
                             @for($t=strtotime("08:00"); $t<strtotime("23:00"); $t+=60*60)
-                                <?php $c=date("H:i",$t); ?>
+                                <?php 
+                                    $c=date("H:i",$t); 
+                                    $h=date("H",$t); 
+                                    $i=date("i",$t); 
+                                ?>
                                 <tr>
                                     <th>{{$c}}</th>
+                                    <!-- DAY COLUMN -->
                                     @for($td=0; $td<count($hari); $td++)
                                         <td style="text-align: center; width: 13%;">
-                                            <?php if($toWeek<=$currentWeek && $td<date('w')){echo "<i class='fa fa-warning' style='color:#dcdcdc;font-size:80%;' title='Kadaluarsa'></i>"; continue;} ?>
-                                            @foreach($terisi as $ada)
+                                            <?php
+                                            $d=date('d',strtotime($week->year."-W".$week->currentWeek."-".$td));
+                                            $timestampVal = mktime($h,$i,0,$week->month,$d,$week->year);
+                                            $datev = date("Y-m-d", $timestampVal);
+                                            $timev = date("H:i:s", $timestampVal);
+                                            $timestampVal = $datev."T".$timev."Z";
+                                            //var_dump($dateVal);
+                                            ?>
+                                            <?php if(($week->currentWeek<$week->weekOfYear) || ($week->currentWeek<=$week->weekOfYear) && $d<date('d')){echo "<i class='fa fa-warning' style='color:#dcdcdc;font-size:80%;' title='Kadaluarsa'></i>"; continue;} ?>
+                                            <?php
+                                            $isGet = false;
+                                            ?>
+                                            @if(count($bookings)>0)
+                                            @foreach($isi as $ada)
                                                 <?php
-                                                list($cc, $tdd)=explode('-',$ada);
-                                                $cx = date('H',strtotime($c));
-                                                $isGet = ($cx==$cc && $td==$tdd)?true:false;
+                                                $isGet = ($timestampVal==$ada)?true:false;
                                                 ?>
                                                 @if($isGet==true)
                                                     <i class="fa fa-check-square" style="font-size: 200%; color:#4fbfa8;" title="Jadwal Sudah Diambil"></i>
                                                     <?php break;?>
                                                 @endif
                                             @endforeach
+                                            @endif
                                             @if($isGet==false)
                                             <!-- <button class="btn btn-default" title="{{$td}}|{{date('H:i',$t)}}">Ambil</button> -->
-                                                <label class="radioStyle">
+                                                @if($td>date('w') || $h>date('H') || $d!=date('d'))
+                                                <label class="radioStyle" title="{{$timestampVal}}">
                                                     <i class="fa fa-thumbs-o-up"></i>
-                                                    <input type="radio" name="jadwal" value="{{$td}}-{{date('H:i',$t)}}" title="{{$td}}|{{date('H:i',$t)}}">
+                                                    <input type="radio" name="jadwal" value="{{$timestampVal}}">
                                                 </label>
+                                                @else
+                                                <i class='fa fa-warning' style='color:#dcdcdc;font-size:80%;' title='Kadaluarsa'></i>
+                                                @endif
                                             @endif
                                         </td>
                                     @endfor
@@ -317,7 +364,7 @@
             var ele = $('#map-info');
             console.log(pos);
             var latlon = pos.coords.latitude + ',' + pos.coords.longitude;
-            alert(latlon);
+            //alert(latlon);
             ele.attr('data-current', latlon);
         }
 

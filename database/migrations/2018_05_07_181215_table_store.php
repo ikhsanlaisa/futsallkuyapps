@@ -13,7 +13,7 @@ class TableStore extends Migration
      */
     public function up()
     {
-        Schema::create('stores', function (Blueprint $table) {
+        Schema::create('Stores', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('owner_id')->unsigned();;

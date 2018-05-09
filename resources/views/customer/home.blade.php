@@ -90,13 +90,13 @@
                                     <!-- <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div> -->
                                 </div>
                                 <div class="text">
-                                    <h4><a href="{{"/detail/$l->id"}}">{{$l->name}}</a></h4>
+                                    <h4><a href="{{"/lapangan/$l->id"}}">{{$l->name}}</a></h4>
                                     <p class="intor">
                                     <div>{{$l->price}},-/jam</div>
                                     <div>Tersedia: Tersedia</div>
                                     <div>Rating: 1</div>
                                     </p>
-                                    <a href="{{"/detail/$l->id"}}" class="btn btn-template-outlined btn-block">Book now</a>
+                                    <a href="{{"/lapangan/$l->id"}}" class="btn btn-template-outlined btn-block">Book now</a>
                                 </div>
                             </div>
                         </div>

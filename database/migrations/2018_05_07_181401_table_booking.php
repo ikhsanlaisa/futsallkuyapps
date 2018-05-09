@@ -13,7 +13,7 @@ class TableBooking extends Migration
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('Bookings', function (Blueprint $table) {
             //$table->increments('id');
             $table->integer('id')->primary();
             $table->timestamps();
@@ -28,7 +28,7 @@ class TableBooking extends Migration
             $table->integer('lap_id')->unsigned();
 
             $table->foreign('customer_id')->references('id')->on('users');
-            $table->foreign('lap_id')->references('id')->on('tb_lapangans');
+            $table->foreign('lap_id')->references('id')->on('Lapangans');
         });
     }
 

@@ -7,13 +7,13 @@
 @section('style')
 @endsection
 <?php
-$minggu = $_GET['minggu'];
+if(!isset($_GET['jadwal'])){die("<script>alert('Pilih Jadwal Dahulu.'); window.location.href='/';</script>");}
 $jadwal = $_GET['jadwal'];
-$jadwal = explode("-", $jadwal);
-$day = $jadwal[0];
-$hour = $jadwal[1];
+$jadwalDate = date('d M y H:i:s', strtotime($jadwal));
 $hari = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu'];
-$day = $hari[$day];
+//$day = $hari[$day];
+
+$user = Auth::user();
 ?>
 @section('content')
     <section class="bar bg-primary no-mb color-white">
@@ -27,8 +27,6 @@ $day = $hari[$day];
                             <img src="{{asset('images/lapangan/')}}/{{$laps->foto}}" style="width: 98%;">
                         </div>
                         @php
-                            $days = strtoupper($day);
-                            $hours = $hour;
                             $lapang = $laps->id;
                             $price = $laps->price;
                         @endphp
@@ -38,7 +36,7 @@ $day = $hari[$day];
                             <h4>Alamat</h4>
                             <p>{{$laps->alamat}}</p>
                             <h4>Jadwal</h4>
-                            <p>{{strtoupper($day)}} {{$hour}}</p>
+                            <p>{{$jadwalDate}}</p>
                         </div>
                     </div>
                 </div>
@@ -105,10 +103,8 @@ $day = $hari[$day];
                                 <i class="fa fa-dot-circle-o"></i> Lanjutkan
                             </button>
                         </div>
-                        <input type="hidden" id="days" name="days"
-                               placeholder="Nama Lapangan" value="{{$days}}" class="form-control" >
-                        <input type="hidden" id="hours" name="hours"
-                               placeholder="Nama Lapangan" value="{{$hours}}" class="form-control" >
+                        <input type="hidden" id="jadwal" name="jadwal"
+                               placeholder="Nama Lapangan" value="{{$jadwal}}" class="form-control" >
                         <input type="hidden" id="laps" name="laps"
                                placeholder="Nama Lapangan" value="{{$lapang}}" class="form-control" >
                         <input type="hidden" id="price" name="price"
