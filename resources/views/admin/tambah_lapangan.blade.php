@@ -4,14 +4,19 @@
     <div class="col-lg-10 align-self-lg-center">
         <div class="card">
             <div class="card-header">
-                <strong>Basic Form</strong> Elements
+                <span style="text-transform: uppercase;"><strong>Lapangan</strong> <small>Create New</small></span>
             </div>
             @if(Session::has('message'))
                 <div class="alert alert-success">
                     <p>{{ Session::get('message') }}</p>
                 </div>
             @endif
+
             <div class="card-body card-block">
+                @include('content_lapangan_form')
+            </div>
+
+            <!-- <div class="card-body card-block">
                 <form action="/post_lapangan" method="post" enctype="multipart/form-data" class="form-horizontal">
                     {{csrf_field()}}
                     <div class="form-group gllpLatlonPicker">
@@ -108,7 +113,7 @@
                         </center>
                     </div>
                 </form>
-            </div>
+            </div> -->
         </div>
     </div>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -26,6 +26,7 @@ class TableBooking extends Migration
             $table->string('tariftotal');
             $table->integer('customer_id')->unsigned();
             $table->integer('lap_id')->unsigned();
+            $table->integer('playersNum')->default(1);
 
             $table->foreign('customer_id')->references('id')->on('users');
             $table->foreign('lap_id')->references('id')->on('Lapangans');

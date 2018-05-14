@@ -44,31 +44,42 @@
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            <a class="navbar-brand" href="/admin/">Futsalkuy!!</a>
+            <a class="navbar-brand hidden" href="/admin/">FA</a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="/"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="/admin/"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                </li>
+                <li class="">
+                    <a href="/admin/analytics"> <i class="menu-icon fa fa-shopping-cart"></i>Analytics</a>
                 </li>
 
-                <li class="active">
+                <!-- <li class="active">
                     <a href="/data_lapangan"> <i class="menu-icon fa fa-plus-square-o"></i>Management Lapangan</a>
+                </li> -->
+                <li class="menu-item-has-children dropdown open show">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="menu-icon fa fa-th"></i>Manage</a>
+                    <ul class="sub-menu children dropdown-menu show">
+                        <li><i class="menu-icon fa fa-th"></i><a href="/admin/manage/store">Store Detail</a></li>
+                        <li class="active"><i class="menu-icon fa fa-th"></i><a href="/admin/manage/lapangan">Lapangan</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="/admin/manage/users">Users</a></li>
+                    </ul>
                 </li>
 
-                <li class="active">
+                <!-- <li class="">
                     <a href="#"> <i class="menu-icon fa fa-calendar-check-o"></i>Management Jadwal</a>
+                </li> -->
+
+
+                <li class="">
+                    <a href="/admin/transaction"> <i class="menu-icon fa fa-shopping-cart"></i>Transaction</a>
                 </li>
 
-
-                <li class="active">
-                    <a href="#"> <i class="menu-icon fa fa-shopping-cart"></i>Transaksi</a>
-                </li>
-
-                <li class="active">
-                    <a href="#"> <i class="menu-icon fa fa-wrench"></i>Pengaturan</a>
+                <li class="">
+                    <a href="/admin/settings"> <i class="menu-icon fa fa-wrench"></i>Pengaturan</a>
                 </li>
 
             </ul>
@@ -243,13 +254,14 @@
 <script src="{{asset('js/lib/data-table/buttons.colVis.min.js')}}"></script>
 <script src="{{asset('js/lib/data-table/datatables-init.js')}}"></script>
 
+@yield('script')
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('#bootstrap-data-table-export').DataTable();
     });
 </script>
-<script>
+<!-- <script>
     (function ($) {
         "use strict";
 
@@ -266,8 +278,8 @@
             normalizeFunction: 'polynomial'
         });
     })(jQuery);
-</script>
-<script>
+</script> -->
+<!-- <script>
     $(document).ready(function () {
         $(".gllpLatlonPicker").each(function () {
             $obj = $(document).gMapsLatLonPicker();
@@ -286,7 +298,7 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNzWiABwK8HB07dWxGNYQuHjBIHjhqAC8&callback=myMaps"></script>
 <script>
     $.gMapsLatLonPickerNoAutoInit = 1;
-</script>
+</script> -->
 
 </body>
 </html>

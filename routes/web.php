@@ -22,9 +22,9 @@ Auth::routes();
 Route::get('/admin', 'indexController@index');
 
 //------data lapangan-----
-// Route::get('/data_lapangan', 'TbLapanganController@data_lapangan');
+// Route::get('/data_lapangan', 'LapanganController@data_lapangan');
 
-// Route::get('/tambah_lapangan', 'TbLapanganController@tambah_lapangan');
+// Route::get('/tambah_lapangan', 'LapanganController@tambah_lapangan');
 
 // Route::post('/post_lapangan', 'TbLapanganController@store');
 
@@ -70,6 +70,12 @@ Route::get('/admin', 'indexController@index');
  * LANDING CUSTOMER VIEW
  */
 Route::get('/', 'Customer\HomesController@index');
+Route::get('/lobbies', 'LobbyController@index');
+Route::get('/lobbies/randomize', 'LobbyController@random');
+Route::get('/lobbies/randomize/generate', 'LobbyController@rawRandom');
+Route::get('/book/show/{id}', 'BookingController@show');
+Route::get('/book/join/{bookid}', 'BookingController@joining')->middleware('auth');
+Route::post('/book/join/{bookid}/confirmed', 'BookingController@adding_player')->middleware('auth');
 
 /*
  * LAPANGAN CUSTOMER VIEW
@@ -80,12 +86,12 @@ Route::get('/lapangan/{id}/book', 'Customer\HomesController@booking')->middlewar
 /*
  * LAPANGAN ADMIN VIEW
  */
-Route::get('/admin/lapangan/new', 'LapanganController@tambah_lapangan');
-Route::get('/admin/lapangan/new', 'LapanganController@tambah_lapangan');
-Route::post('/admin/lapangan/create', 'LapanganController@store');
-Route::get('/admin/lapangan/{$id}/edit', 'LapanganController@store');
-Route::put('/admin/lapangan/{$id}/update', 'LapanganController@store');
-Route::delete('/admin/lapangan/{$id}/delete', 'LapanganController@destroy');
+Route::get('/admin/manage/lapangan/new', 'LapanganController@tambah_lapangan');
+Route::post('/admin/manage/lapangan/create', 'LapanganController@store')->name('create_lapangan');
+Route::get('/admin/manage/lapangan/{$id}/edit', 'LapanganController@store');
+Route::put('/admin/manage/lapangan/{$id}/update', 'LapanganController@store');
+Route::delete('/admin/manage/lapangan/{$id}/delete', 'LapanganController@destroy');
+Route::get('/admin/manage/lapangan', 'LapanganController@data_lapangan');
 
 
 /*
@@ -93,6 +99,22 @@ Route::delete('/admin/lapangan/{$id}/delete', 'LapanganController@destroy');
  */
 Route::post('/post_book', 'Customer\CustomerTransactionController@store')->middleware('auth');
 Route::get('/book/{id}/created', 'Customer\CustomerTransactionController@show');
+
+
+/*
+ * PROFILE CUSTOMER VIEW
+ */
+Route::get('/my', 'Customer\ProfileController@index');
+Route::get('/my/edit', 'Customer\ProfileController@edit');
+Route::get('/my/team', 'Customer\ProfileController@index_team');
+Route::get('/my/booking', 'Customer\ProfileController@index_booking');
+Route::get('/my/topup', 'Customer\ProfileController@index_topup');
+
+
+
+/*
+ * UTILITIES ROUTING
+ */
 
 //$json = '[
 //	{

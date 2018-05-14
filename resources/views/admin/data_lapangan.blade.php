@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <button type="button" onclick="location.href ='/tambah_lapangan'" class="btn btn-primary">Tambah data</button>
+                            <button type="button" onclick="location.href ='/admin/manage/lapangan/new'" class="btn btn-primary">Tambah data</button>
                             <a href=""></a>
                         </div>
                         @if(Session::has('message'))
