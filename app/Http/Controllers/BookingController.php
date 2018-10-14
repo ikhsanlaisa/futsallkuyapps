@@ -31,6 +31,7 @@ class BookingController extends Controller
         return view('customer.joining_detail')->with(['booking' => $booking, 'status' => $status]);
     }
 
+
     /*
      * PLAYER CONTROLLER
      */
