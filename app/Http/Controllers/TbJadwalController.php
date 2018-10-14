@@ -15,5 +15,7 @@ class TbJadwalController extends Controller
     public function index(){
         $jadwal = tb_jadwal::where('lapangan_id');
         return view('admin.data_jadwal')->with('jadwal', $jadwal);
+
+
     }
 }
