@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,11 +13,11 @@ class AppServiceProvider extends ServiceProvider
      * @param UrlGenerator $url
      * @return void
      */
-    public function boot(UrlGenerator $url)
+    public function boot()
     {
         Schema::defaultStringLength(191);
         If (env('APP_ENV') !== 'local') {
-            $url->forceSchema('https');
+            \URL::forceScheme('https');
         }
 
     }
