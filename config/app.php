@@ -177,8 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        crocodicstudio\dokularavel\DokuLaravelServiceProvider::class
-
+        crocodicstudio\dokularavel\DokuLaravelServiceProvider::class,
+//        Spatie\Geocoder\GeocoderServiceProvider::class,
+//        GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
+//        Cornford\Googlmapper\MapperServiceProvider::class,
+//        Geocoder\Provider\Nominatim\Nominatim::class,
     ],
 
     /*
@@ -227,6 +230,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Geocoder' => Spatie\Geocoder\Facades\Geocoder::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
+        'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
 
     ],
 

@@ -6,11 +6,19 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "alexpechkarev/google-maps": "1.0.9",
+        "cornford/googlmapper": "^2.33",
         "crocodicstudio/dokularavel": "^1.6",
         "fideloper/proxy": "~3.3",
+        "geocoder-php/nominatim-provider": "^5.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "otezz/doku-php": "^1.0"
+        "maxh/php-nominatim": "^2.2",
+        "otezz/doku-php": "^1.0",
+        "php-http/guzzle6-adapter": "^1.1",
+        "php-http/message": "^1.7",
+        "spatie/geocoder": "^3.3",
+        "willdurand/geocoder": "^4.2"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

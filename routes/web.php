@@ -73,7 +73,7 @@ Route::get('/', 'Customer\HomesController@index');
 Route::get('/lobbies', 'LobbyController@index');
 Route::get('/lobbies/randomize', 'LobbyController@random');
 Route::get('/lobbies/randomize/generate', 'LobbyController@rawRandom');
-Route::get('/book/show/{id}', 'BookingController@show');
+Route::get('/book/show/{id}', 'BookingController@show')->name('book-show');
 Route::get('/book/join/{bookid}', 'BookingController@joining')->middleware('auth');
 Route::post('/book/join/{bookid}/confirmed', 'BookingController@adding_player')->middleware('auth');
 
@@ -115,6 +115,23 @@ Route::get('/my/topup', 'Customer\ProfileController@index_topup');
 /*
  * UTILITIES ROUTING
  */
+Route::get('/geocoder-test', function(){
+    $client = new GuzzleHttp\Client();
+    $geocoder = new \Spatie\Geocoder\Geocoder($client);
+    return $geocoder->setApiKey(env('GOOGLE_MAPS_GEOCODING_API_KEY'))
+     ->getCoordinatesForAddress('Infinite Loop 1, Cupertino');
+});
+
+Route::get('/geocoder-test0',function(){
+    $response = \GoogleMaps::load('geocoding')
+        ->setParam (['address' =>'santa cruz'])
+        ->get();
+    return $response;
+});
+
+Route::get('/gecode-test', 'GeocoderController@index');
+Route::get('/geocode', 'GeocoderController@show');
+Route::get('/geocode/find', 'GeocoderController@get');
 
 //$json = '[
 //	{

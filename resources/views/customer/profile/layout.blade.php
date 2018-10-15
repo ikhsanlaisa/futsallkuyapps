@@ -24,12 +24,12 @@ Profile ·
     <p style="margin:6px; visibility: visible;">
         <strong>Reputasi </strong>
         <span class="badge badge-primary">1</span>
-        &middot;
-        <strong>Labels </strong>
-        <span class="badge badge-warning">HTML5/CSS</span>
-        <span class="badge badge-info">Adobe CS 5.5</span>
-        <span class="badge badge-info">Microsoft Office</span>
-        <span class="badge badge-success">Windows XP, Vista, 7</span>
+        {{--&middot;--}}
+        {{--<strong>Labels </strong>--}}
+        {{--<span class="badge badge-warning">HTML5/CSS</span>--}}
+        {{--<span class="badge badge-info">Adobe CS 5.5</span>--}}
+        {{--<span class="badge badge-info">Microsoft Office</span>--}}
+        {{--<span class="badge badge-success">Windows XP, Vista, 7</span>--}}
     </p>
     <hr>
     <div class="text-center">

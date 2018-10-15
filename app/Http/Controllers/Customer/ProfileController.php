@@ -23,8 +23,9 @@ class ProfileController extends Controller
     	$user=Auth::user();
     	$userid  = intval(Auth::user()->id);
         $booking = Booking::with('lapangan')->where('customer_id', $userid)->get();
-        // return view('customer.orders')->with(['tabnav'=>2, 'booking' => $booking, 'user' => $user]);
-        return view('customer.profile.booking')->with(['tabnav'=>2, 'user' => $user]);
+        //dd($booking);
+        //return response()->json($booking);
+        return view('customer.profile.booking')->with(['tabnav'=>2, 'user' => $user,'booking'=>$booking]);
     }
     public function index_topup(){
         $user=Auth::user();

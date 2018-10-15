@@ -287,7 +287,7 @@ date_default_timezone_set("Asia/Jakarta");
 @endsection
 
 @section('script')
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCdGAaS1utZmaezKhSGSTqnpMlrDEk3ss&callback=initMap&libraries=places"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy4dCOO4h6xXdHI_YGG0l740nx6mYlD8A&callback=initMap&libraries=places"
             async defer></script>
     <script type="text/javascript">
         $(document).ready(() => {
