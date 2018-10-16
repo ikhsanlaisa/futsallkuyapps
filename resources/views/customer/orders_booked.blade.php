@@ -94,7 +94,7 @@ $json_booking = '[
 $items = json_decode($json_booking);
 // $item = $items[4];
 $item = $booking;
-$server = "http://".getHostByName(getHostName());
+$server = env('APP_URL');
 $code = $server."/confirm/".$item->id;
 ?>
 <div class="container">

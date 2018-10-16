@@ -172,7 +172,7 @@ $menus = ['Detail', 'QR', 'Players'];
 $codeText = $booking->id;
 // $code = md5($codeText);
 $code = $codeText;
-$server = "http://" . getHostByName(getHostName());
+$server = env('APP_URL');
 $code = $server . "/book/show/" . $code;
 ?>
 <script type="text/javascript">
